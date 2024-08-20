@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        .flex {
+            display: flex;
+        }
+        img {
+            width: 40%;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Information</h1>
+    <div class="flex">
+        <img src="./img/bus.png" alt="Bus Image">
+        <img src="./img/car.png" alt="Car Image">
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Grade</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>15</td>
+                <td>A</td>
+                <td>jihi</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+                <td>14</td>
+                <td>B</td>
+                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quasi, facere illum tempora iure nam dolores beatae soluta reprehenderit amet repellendus quisquam, consequuntur maxime iste nisi, voluptatum eaque voluptates est.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Emily Johnson</td>
+                <td>16</td>
+                <td>A</td>
+                <td>jihi</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Michael Brown</td>
+                <td>15</td>
+                <td>C</td>
+                <td>jihi</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const tbody = document.getElementById('tbody');
+        for (let i = 5; i < 20; i++) {
+            tbody.insertAdjacentHTML('beforeend', `
+                <tr>
+                    <td>${i}</td>
+                    <td>Michael Brown</td>
+                    <td>${10 + i}</td>
+                    <td>C</td>
+                    <td>jihi</td>
+                </tr>
+            `);
+        }
+    </script>
+</body>
+</html>

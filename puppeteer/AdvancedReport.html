@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Report</title>
+    <style>
+      @page {
+        margin: 20mm;
+        size: A4;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        position: relative; /* Required for absolute positioning of watermark */
+      }
+      .header,
+      .footer {
+        position: fixed;
+        width: 100%;
+        left: 0;
+        background: #4caf50;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        top: 0;
+        border-bottom: 2px solid #fff;
+      }
+      .footer {
+        bottom: 0;
+        border-top: 2px solid #fff;
+        font-size: 12px;
+      }
+      .content {
+        margin-top: 60px;
+        margin-bottom: 40px;
+        position: relative; /* To ensure watermark is properly placed */
+        z-index: 1; /* To keep content above watermark */
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      tr:hover {
+        background-color: #ddd;
+      }
+      /* Watermark styles */
+      .watermark {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        opacity: 0.2;
+        font-size: 6rem;
+        color: rgba(0, 0, 0, 0.3);
+        white-space: nowrap;
+        z-index: 100;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="watermark">Confidential</div>
+    <!-- Watermark Element -->
+
+    <div class="header">
+      <h1>Advanced Student Report</h1>
+      <div>Generated on: <span id="current-date"></span></div>
+    </div>
+
+    <div class="content">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Grade</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody id="student-table-body">
+          <!-- Dynamic rows will be inserted here -->
+        </tbody>
+      </table>
+    </div>
+
+    <script src="studentsData.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Set current date
+        const dateElement = document.getElementById("current-date");
+        const now = new Date();
+        dateElement.textContent = now.toLocaleDateString();
+
+        // Populate student data
+        const tbody = document.getElementById("student-table-body");
+        students.forEach((student) => {
+          const row = `<tr>
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.age}</td>
+                    <td>${student.grade}</td>
+                    <td>${student.description}</td>
+                </tr>`;
+          tbody.insertAdjacentHTML("beforeend", row);
+        });
+      });
+    </script>
+  </body>
+</html>
